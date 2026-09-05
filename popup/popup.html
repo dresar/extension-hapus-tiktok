@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Auto Video Deleter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-group">
+        <div class="logo-icon">🗑️</div>
+        <div>
+          <h1 class="title">TikTok Deleter</h1>
+          <span class="subtitle">Auto Video Deleter Pro</span>
+        </div>
+      </div>
+      <div class="status-indicator" id="statusIndicator">
+        <span class="pulse-dot" id="pulseDot"></span>
+        <span class="status-text" id="statusText">IDLE</span>
+      </div>
+    </header>
+
+    <!-- Page Status Notice -->
+    <div class="notice-card" id="noticeCard">
+      <div class="notice-label">Halaman Terdeteksi:</div>
+      <div class="video-id-badge" id="detectedVideoId">Mendeteksi URL...</div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-label">Sesi Ini</span>
+        <span class="stat-number cyan" id="statSession">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Total Terhapus</span>
+        <span class="stat-number red" id="statTotal">0</span>
+      </div>
+    </div>
+
+    <!-- Configuration Settings -->
+    <div class="settings-card">
+      <div class="setting-item">
+        <label for="delayInput">Jeda Antar Video:</label>
+        <div class="input-unit-wrapper">
+          <input type="number" id="delayInput" min="1" max="60" value="2">
+          <span class="unit">detik</span>
+        </div>
+      </div>
+
+      <div class="setting-item">
+        <label for="limitInput">Batas Hapus (0 = Bebas):</label>
+        <div class="input-unit-wrapper">
+          <input type="number" id="limitInput" min="0" max="1000" value="0">
+          <span class="unit">video</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions-group">
+      <button class="btn btn-secondary" id="btnDeleteSingle">
+        🗑️ Hapus 1 Video Ini
+      </button>
+      <button class="btn btn-primary" id="btnToggleLoop">
+        ▶️ Mulai Auto Loop Hapus
+      </button>
+    </div>
+
+    <!-- Secondary Links & Reset -->
+    <div class="footer-links">
+      <button class="text-btn" id="btnResetStats">🔄 Reset Counter</button>
+      <span class="separator">•</span>
+      <button class="text-btn" id="btnOpenDocs">📖 Panduan</button>
+    </div>
+
+    <!-- Toast / Notification inside popup -->
+    <div class="popup-toast" id="popupToast"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
